@@ -30,18 +30,20 @@ export default function MainGrid() {
 
   return (
     <>
-      <h1>This is my main Grid</h1>
         <ul>
-        
-      <div className="grid grid-cols-6 gap-4">
+      <div className="flex justify-center pt-8">  
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-5">
         {games.map((game) => (
-          <li key={game.id} className="bg-black h-96 rounded-lg overflow-hidden w-72">
+          <li key={game.id} className="bg-black h-96 rounded-lg overflow-hidden max-w-72">
             <div className="h-1/2">
               <img className="h-full object-cover" src={game.background_image} alt={game.name} ></img>
             </div>
-            <h2>{game.name}</h2>
+            <div className="flex h-full  justify-start p-4">
+            <h2 className="text-left">{game.name}</h2>
+            </div>
           </li>
         ))} 
+      </div>
       </div>
         </ul>
     </>
