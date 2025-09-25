@@ -19,12 +19,12 @@ export default function MainGrid() {
 
         const data = await response.json();
         setGames(data.results);
+        //const platformNames = data.results.flatmap(game => game.platforms.parent_platforms.map(item => item.platform));
       }
       catch {
         console.error("fetch error:", error);
       }
     }
-
     getData();
   }, []);
 
@@ -40,7 +40,8 @@ export default function MainGrid() {
             </div>
             <div className=" h-full  justify-start p-4">
               <h2 className="text-left">{game.name}</h2>
-              <p className="text-left">Rating: {game.rating}</p>
+              <p className="text-left">Metacritic: {game.metacritic}</p>
+              <div className="flex gap-x-2 text-xs text-left flex-wrap gap-y-0">{game.parent_platforms.map((item) => (<p key={item.platform.id}>{item.platform.name}</p>))}</div>
             </div>
           </li>
         ))} 
