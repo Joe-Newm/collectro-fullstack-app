@@ -38,8 +38,9 @@ export default function MainGrid() {
             <div className="h-1/2">
               <img className="h-full object-cover" src={game.background_image} alt={game.name} ></img>
             </div>
-            <div className="flex h-full  justify-start p-4">
-            <h2 className="text-left">{game.name}</h2>
+            <div className=" h-full  justify-start p-4">
+              <h2 className="text-left">{game.name}</h2>
+              <p className="text-left">Rating: {game.rating}</p>
             </div>
           </li>
         ))} 
