@@ -4,11 +4,15 @@ import { useEffect, useState } from "react";
 
 export default function MainGrid() {
   const [games, setGames] = useState([]);
+  const [next, setNext ] = useState([]);
+  const [prev, setPrev ] = useState([]);
 
-  useEffect(() => {
-    async function getData() {
-      const apiKey = import.meta.env.VITE_RAWG_API_KEY;
-      const url = `https://api.rawg.io/api/games?key=${apiKey}`
+
+  const apiKey = import.meta.env.VITE_RAWG_API_KEY;
+  const baseUrl = `https://api.rawg.io/api/games?key=${apiKey}`
+
+
+    async function getData(url) {
 
       try {
         const response = await fetch(url)
@@ -19,13 +23,16 @@ export default function MainGrid() {
 
         const data = await response.json();
         setGames(data.results);
-        //const platformNames = data.results.flatmap(game => game.platforms.parent_platforms.map(item => item.platform));
+        setNext(data.next);
+        setPrev(data.previous)
       }
       catch {
         console.error("fetch error:", error);
       }
     }
-    getData();
+
+  useEffect(() => {
+    getData(baseUrl);
   }, []);
 
   return (
@@ -48,6 +55,18 @@ export default function MainGrid() {
       </div>
       </div>
         </ul>
+        <div className="flex flex-row justify-center gap-4 m-8">
+          <button 
+          onClick={() => getData(prev)}
+          className="h-20 w-20 !bg-gray-600"
+
+          >prev</button>
+          <button
+          onClick={() => getData(next)}
+          className="h-20 w-20 !bg-gray-600"
+
+          >next</button>
+        </div>
     </>
   );
 }
