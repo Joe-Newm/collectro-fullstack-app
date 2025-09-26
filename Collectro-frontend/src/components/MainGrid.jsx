@@ -57,13 +57,23 @@ export default function MainGrid() {
         </ul>
         <div className="flex flex-row justify-center gap-4 m-8">
           <button 
-          onClick={() => getData(prev)}
+          onClick={() => {if (prev) {
+            getData(prev); 
+            window.scrollTo({top: 0, behavior: "smooth"});
+          }
+          }
+        }
           className="h-20 w-20 !bg-gray-600"
 
           >prev</button>
           <button
-          onClick={() => getData(next)}
+          onClick={() => {if (next)
+            getData(next)
+            window.scrollTo({top: 0, behavior: "smooth"})
+            }
+          } 
           className="h-20 w-20 !bg-gray-600"
+          href="#top"
 
           >next</button>
         </div>
