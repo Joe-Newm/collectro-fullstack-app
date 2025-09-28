@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Card from "./Card.jsx";
 
 
 
@@ -42,14 +43,7 @@ export default function MainGrid() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-5">
         {games.map((game) => (
           <li key={game.id} className="bg-black h-96 rounded-lg overflow-hidden max-w-72">
-            <div className="h-1/2">
-              <img className="h-full object-cover" src={game.background_image} alt={game.name} ></img>
-            </div>
-            <div className=" h-full  justify-start p-4">
-              <h2 className="text-left">{game.name}</h2>
-              <p className="text-left">Metacritic: {game.metacritic}</p>
-              <div className="flex gap-x-2 text-xs text-left flex-wrap gap-y-0">{game.parent_platforms.map((item) => (<p key={item.platform.id}>{item.platform.name}</p>))}</div>
-            </div>
+            <Card game={game}></Card>
           </li>
         ))} 
       </div>
