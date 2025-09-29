@@ -5,14 +5,18 @@ import { FaSearch } from "react-icons/fa";
 
 export default function Search() {
     const [ input, setInput ] = useState("");
+    const [ searchResults, setSearchResults] = useState([]);
+    const [ focused, setFocused ] = useState(false);
 
-    const fetchData = (value) => {
-        fetch("https://jsonplaceholder.typicode.com/users").then((response) => response.json()).then((json) => {
-            const results = json.filter((user) => {
-                return value && user && user.name && user.name.toLowerCase().includes(value.toLowerCase());
-            })
-            console.log(results)
-        });
+
+    const apiKey = import.meta.env.VITE_RAWG_API_KEY;
+
+    const fetchData = async (value) => {
+        if (!value) return setSearchResults([]);
+        const baseUrl = `https://api.rawg.io/api/games?key=${apiKey}&search=${value}`
+        const response = await fetch(baseUrl);
+        const results = await response.json();
+        setSearchResults(results.results);
     }
 
     const handleChange = (value) => {
@@ -21,9 +25,24 @@ export default function Search() {
     }
 
     return (
-        <div className="flex justify-center bg-white p-2 gap-4 rounded-sm items-center">
-            <FaSearch className="text-black" id="search-icon" />
-            <input className=" bg-white w-lg text-black outline-0" placeholder="Type to search..." value={input} onChange={(e) => handleChange(e.target.value)}/>
+        <div className="flex flex-col gap-2 h-100% mt-10">
+            <div className="flex justify-center bg-white p-2 gap-4 rounded-sm items-center">
+                <FaSearch className="text-black" id="search-icon" />
+                <input onBlur={() => setFocused(false)} onFocus={() => setFocused(true)} className=" bg-white w-lg text-black outline-0" placeholder="Type to search..." value={input} onChange={(e) => handleChange(e.target.value)}/>
+            </div>
+            {input && focused ? 
+            <div className="bg-white flex flex-col text-black z-0">
+                <ul>
+                    {searchResults.map((game) => (
+                              <li key={game.id}>
+                                <p>{game.name}</p>
+                              </li>
+                            ))} 
+                </ul>
+            </div>
+            :
+            null
+            }
         </div>
     )
 }
