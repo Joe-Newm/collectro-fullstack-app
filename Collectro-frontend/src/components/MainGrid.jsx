@@ -3,38 +3,9 @@ import Card from "./Card.jsx";
 
 
 
-export default function MainGrid() {
-  const [games, setGames] = useState([]);
-  const [next, setNext ] = useState([]);
-  const [prev, setPrev ] = useState([]);
+export default function MainGrid({games, prev, next, getData}) {
 
 
-  const apiKey = import.meta.env.VITE_RAWG_API_KEY;
-  const baseUrl = `https://api.rawg.io/api/games?key=${apiKey}`
-
-
-    async function getData(url) {
-
-      try {
-        const response = await fetch(url)
-
-        if (!response.ok) {
-          throw new Error(`Error ${response.status}`)
-        }
-
-        const data = await response.json();
-        setGames(data.results);
-        setNext(data.next);
-        setPrev(data.previous)
-      }
-      catch {
-        console.error("fetch error:", error);
-      }
-    }
-
-  useEffect(() => {
-    getData(baseUrl);
-  }, []);
 
   return (
     <>
@@ -62,7 +33,7 @@ export default function MainGrid() {
           >prev</button>
           <button
           onClick={() => {if (next)
-            getData(next)
+            getData(next, undefined)
             window.scrollTo({top: 0, behavior: "smooth"})
             }
           } 
