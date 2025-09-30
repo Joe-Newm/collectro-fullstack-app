@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useSearchParams } from 'react-router-dom'
 import { FaSearch } from "react-icons/fa";
-
+import debounce from "lodash.debounce";
 
 export default function Search({ setSearchParams}) {
     const [ input, setInput ] = useState("");
@@ -12,17 +12,18 @@ export default function Search({ setSearchParams}) {
     const apiKey = import.meta.env.VITE_RAWG_API_KEY;
     const baseUrl = `https://api.rawg.io/api/games?key=${apiKey}`
 
-    const fetchData = async (value) => {
-        if (!value) return setSearchResults([]);
-        const baseUrl = `https://api.rawg.io/api/games?key=${apiKey}&search=${value}`
-        const response = await fetch(baseUrl);
-        const results = await response.json();
-        setSearchResults(results.results);
-    }
+    const debouncedFetchData = useMemo(
+        () => 
+            debounce((value) => {       
+            if (!value) return setSearchResults([]);
+            const baseUrl = `https://api.rawg.io/api/games?key=${apiKey}&search=${value}`;
+            fetch(baseUrl).then(res => res.json()).then(data => setSearchResults(data.results)).catch(err => console.error(err))
+            }, 300), [apiKey, setSearchResults]
+        );
 
     const handleChange = (value) => {
         setInput(value);
-        fetchData(value);
+        debouncedFetchData(value);
     }
 
     const handleSubmit = (e) => {
