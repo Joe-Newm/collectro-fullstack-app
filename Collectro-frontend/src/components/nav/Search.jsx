@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-
+import { useSearchParams } from 'react-router-dom'
 import { FaSearch } from "react-icons/fa";
 
 
-export default function Search({getData}) {
+export default function Search({ setSearchParams}) {
     const [ input, setInput ] = useState("");
     const [ searchResults, setSearchResults] = useState([]);
     const [ focused, setFocused ] = useState(false);
@@ -27,12 +27,12 @@ export default function Search({getData}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        getData(baseUrl, input);
+        setSearchParams({ search: input, page: 1 });
     }
 
     return (
         <div className="flex flex-col gap-2 h-100% mt-10">
-            <div className="flex justify-center bg-white p-2 gap-4 rounded-sm items-center">
+            <div className="flex justify-center bg-white p-2 gap-4 rounded-lg items-center">
                 <form onSubmit={handleSubmit}>
                 <input onBlur={() => setFocused(false)} onFocus={() => setFocused(true)} className=" bg-white w-lg text-black outline-0" placeholder="Type to search..." value={input} onChange={(e) => handleChange(e.target.value)}/>
                 <button className="w-14" type="submit"><FaSearch /></button>
@@ -42,10 +42,10 @@ export default function Search({getData}) {
             <div className="bg-white flex flex-col text-black z-0">
                 <ul>
                     {searchResults.map((game) => (
-                              <li key={game.id}>
-                                <p>{game.name}</p>
-                              </li>
-                            ))} 
+                        <li key={game.id}>
+                            <p>{game.name}</p>
+                        </li>
+                    ))} 
                 </ul>
             </div>
             :

@@ -3,7 +3,7 @@ import Card from "./Card.jsx";
 
 
 
-export default function MainGrid({games, prev, next, getData}) {
+export default function MainGrid({games, query, page, setSearchParams, pageCount}) {
 
 
 
@@ -22,18 +22,26 @@ export default function MainGrid({games, prev, next, getData}) {
         </ul>
         <div className="flex flex-row justify-center gap-4 m-8">
           <button 
-          onClick={() => {if (prev) {
-            getData(prev); 
+          onClick={() => {
+            if (Number(page) === 1) {
+            setSearchParams({search: query, page: Number(page)})
+            } else {
+            setSearchParams({search: query, page: Number(page) - 1})
+            }
             window.scrollTo({top: 0, behavior: "smooth"});
-          }
+          
           }
         }
           className="h-20 w-20 !bg-gray-600"
 
           >prev</button>
           <button
-          onClick={() => {if (next)
-            getData(next, undefined)
+          onClick={() => {
+            if (Number(page) === pageCount || pageCount === 0) {
+            setSearchParams({search: query, page: Number(page)})
+            } else {
+            setSearchParams({search: query, page: Number(page) + 1})
+            }
             window.scrollTo({top: 0, behavior: "smooth"})
             }
           } 
