@@ -31,7 +31,7 @@ function App() {
 
         const data = await response.json();
         setGames(data.results);
-        setPageCount(data.count);
+        setPageCount(Math.ceil(data.count / 20));
       }
       catch {
         console.error("fetch error:", error);

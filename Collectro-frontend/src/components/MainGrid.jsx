@@ -37,10 +37,10 @@ export default function MainGrid({games, query, page, setSearchParams, pageCount
           >prev</button>
           <button
           onClick={() => {
-            if (Number(page) === pageCount || pageCount === 0) {
-            setSearchParams({search: query, page: Number(page)})
+            if (!pageCount || Number(page) >= pageCount) {
+              setSearchParams({search: query, page: Number(page)})
             } else {
-            setSearchParams({search: query, page: Number(page) + 1})
+              setSearchParams({search: query, page: Number(page) + 1})
             }
             window.scrollTo({top: 0, behavior: "smooth"})
             }
