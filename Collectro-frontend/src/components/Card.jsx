@@ -6,7 +6,7 @@ export default function Card({game}) {
     return (
         <>
             <div className="h-1/2">
-              <img className="h-full object-cover" src={game.background_image} alt={game.name} ></img>
+              <img className="h-full object-cover w-full" src={game.background_image} alt={game.name} ></img>
             </div>
             <div className=" h-full  justify-start p-4">
               <h2 className="text-left">{game.name}</h2>

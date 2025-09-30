@@ -1,12 +1,18 @@
-# React + Vite
+# Collectro Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This app is a collection of video games using the Rawg.io API. I'm currently testing and creating a web app with search, pagination, and pulling data with API.
 
-Currently, two official plugins are available:
+## TODO
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+[X] Add Grid for displaying Games from Rawg.io API
+[X] Add Pagination
+[] Add numbered Pagination
+[X] Add search functionality
+[X] Add popup search modal
+[] Add page for selecting a game. Displays more info about game along with trailers etc.
+[] Add videos on hover over cards
+[] Add sections to homepage like "New Games" "Top Rated"
+[] Add filtering
+[] Add authentication
+[] Add functionality for creating your own game collections
+[] Add wishlist
