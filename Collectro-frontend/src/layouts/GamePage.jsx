@@ -19,7 +19,6 @@ export default function GamePage() {
         
     return (
         <div>
-        <Nav />
         <div className="relative">
             <div>
                 <img className="w-full h-[600px] object-cover z-0" src={game.background_image} alt={game.name} />
