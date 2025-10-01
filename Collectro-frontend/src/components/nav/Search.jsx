@@ -33,10 +33,10 @@ export default function Search({ setSearchParams}) {
 
     return (
         <div className="flex flex-col gap-2 h-100% mt-10">
-            <div className="flex justify-center bg-white p-2 gap-4 rounded-lg items-center">
+            <div className="flex justify-center bg-white p-1 pl-4 gap-4 rounded-lg items-center">
                 <form onSubmit={handleSubmit} className="flex">
-                <input onBlur={() => setFocused(false)} onFocus={() => setFocused(true)} className="h-10 bg-white w-lg text-black outline-0" placeholder="Type to search..." value={input} onChange={(e) => handleChange(e.target.value)}/>
-                <button className="w-14 bg-black h-10 rounded-md flex justify-center items-center" type="submit"><FaSearch /></button>
+                <input onBlur={() => setFocused(false)} onFocus={() => setFocused(true)} className="h-8 bg-white w-lg text-black outline-0" placeholder="Type to search..." value={input} onChange={(e) => handleChange(e.target.value)}/>
+                <button className="w-14 bg-black h-8 rounded-md flex justify-center items-center" type="submit"><FaSearch /></button>
                 </form>
             </div>
             {input && focused ? 
