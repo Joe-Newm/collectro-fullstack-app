@@ -1,6 +1,6 @@
 # Collectro Web App
 
-This app is a collection of video games using the Rawg.io API. I'm currently testing and creating a web app with search, pagination, and pulling data with API.
+This app is a collection of video games using the Rawg.io API. I'm currently testing and creating a web app with search, pagination, and pulling data with an API.
 
 ## TODO
 
