@@ -14,9 +14,17 @@ export default function GamePage() {
     fetch(baseUrl).then((res) => res.json()).then((data) => setGame(data))
   }, [id]);
 
-    if (!game) return (<div className="flex h-screen justify-center items-center"><h2 >loading...</h2></div>)
+    if (!game) return (<div className="flex h-screen justify-center items-center"><h2 className="">loading...</h2></div>)
         
     return (
-        <h1>{game.name}</h1>
+        <div className="">
+            <div>
+                <img className="w-full h-[700px] object-cover" src={game.background_image} alt={game.name} />
+            </div>
+            <div className="flex flex-col container mx-auto">
+                <h1>{game.name}</h1>
+                <p> {game.description_raw} </p>
+            </div>
+        </div>
     )
 }
