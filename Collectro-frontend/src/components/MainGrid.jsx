@@ -11,7 +11,7 @@ export default function MainGrid({games, query, page, setSearchParams, pageCount
     <>
         <ul>
       <div className="flex justify-center pt-8">  
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 2xl:grid-cols-5">
         {games.map((game) => (
           <li key={game.id} className="bg-black h-96 rounded-lg overflow-hidden max-w-72">
             <Card game={game}></Card>

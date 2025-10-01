@@ -16,7 +16,7 @@ export default function Search({ setSearchParams}) {
         () => 
             debounce((value) => {       
             if (!value) return setSearchResults([]);
-            const baseUrl = `https://api.rawg.io/api/games?key=${apiKey}&search=${value}`;
+            const baseUrl = `https://api.rawg.io/api/games?key=${apiKey}&search=${value}&page_size=5`;
             fetch(baseUrl).then(res => res.json()).then(data => setSearchResults(data.results)).catch(err => console.error(err))
             }, 300), [apiKey, setSearchResults]
         );
@@ -40,8 +40,8 @@ export default function Search({ setSearchParams}) {
                 </form>
             </div>
             {input && focused ? 
-            <div className="bg-white flex flex-col text-black z-0">
-                <ul>
+            <div className="bg-white flex flex-col text-black z-0 rounded-md text-left p-4">
+                <ul className="flex flex-col gap-4">
                     {searchResults.map((game) => (
                         <li key={game.id}>
                             <p>{game.name}</p>
