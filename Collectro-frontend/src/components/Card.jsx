@@ -11,7 +11,7 @@ export default function Card({game}) {
               <img className="h-full object-cover w-full transition-opacity duration-500 ease-in-out" src={game.background_image} alt={game.name} ></img>
             </div>
             <div className=" h-full  justify-start p-4">
-              <h2 className="text-left">{game.name}</h2>
+              <h4 className="text-left">{game.name}</h4>
               {game.metacritic ? 
               <p className="text-left">Metacritic: {game.metacritic}</p>
                 : null}
