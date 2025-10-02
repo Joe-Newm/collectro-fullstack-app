@@ -7,7 +7,7 @@ export default function Card({game}) {
 
     return (
         <Link to={`/games/${game.id}`} className="!text-white">
-            <div className="h-1/2" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+            <div className="h-60" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
               <img className="h-full object-cover w-full transition-opacity duration-500 ease-in-out" src={game.background_image} alt={game.name} ></img>
             </div>
             <div className=" h-full  justify-start p-4">
