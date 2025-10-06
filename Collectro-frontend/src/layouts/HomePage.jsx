@@ -33,9 +33,9 @@ export default function HomePage() {
         <div className="container mx-auto mt-10 flex flex-col">
             <div>
             <h2 className="font-bold text-left mb-2">Featured Games</h2>
-            <ul className="grid grid-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 2xl:grid-cols-5">
+            <ul className="grid grid-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {featuredGames.map((game) => (
-                    <li key={game.id} className="bg-black h-96 rounded-lg overflow-hidden max-w-80">
+                    <li key={game.id} className="bg-black h-96 rounded-lg overflow-hidden max-w-90">
                         <Card game={game}/>
                     </li>
                 ))}
@@ -43,9 +43,9 @@ export default function HomePage() {
             </div>
             <div>           
             <h2 className="font-bold text-left mb-2 mt-10">New Releases</h2>
-            <ul className="grid grid-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 2xl:grid-cols-5">
+            <ul className="grid grid-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 container mx-auto">
                 {newGames.map((game) => (
-                    <li key={game.id} className="bg-black h-96 rounded-lg overflow-hidden max-w-80">
+                    <li key={game.id} className="bg-black h-96 rounded-lg overflow-hidden max-w-90">
                         <Card game={game}/>
                     </li>
                 ))}
