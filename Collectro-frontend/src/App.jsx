@@ -5,6 +5,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import MainGrid from './components/MainGrid.jsx'
 import Nav from './components/nav/Nav.jsx'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
     <>
       <Nav />
       <Outlet />
+      <Footer />
     </>
   )
 }
