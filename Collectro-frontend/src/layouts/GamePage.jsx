@@ -27,7 +27,10 @@ export default function GamePage() {
             <div className="inset-0 flex flex-col container mx-auto absolute z-20 items-center justify-center text-white">
                 <h1>{game.name}</h1>
                 <p> {game.description_raw} </p>
+              <div className="mt-5 justify-center flex gap-x-2 text-xs text-left flex-wrap gap-y-0">{game.parent_platforms ? (game.parent_platforms.map((item) => (<p key={item.platform.id}>{item.platform.name}</p>))) : null}</div>
+              <a className="mt-5 underline" href={game.website} target="_blank">{game.website ? game.website : null}</a>
             </div>
+
         </div>
         </div>
     )
