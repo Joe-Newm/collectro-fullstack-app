@@ -6,13 +6,15 @@ export default function Nav({setSearchParams}) {
 
     return (
         <>
-        <div className="h-32 bg-black w-full flex justify-between">
-            <div className="flex items-center ml-10">
+        <div className="bg-black">
+        <div className="h-32 bg-black w-full flex justify-between container mx-auto flex-col md:flex-row">
+            <div className="flex items-center">
                 <Link to="/" className="font-black text-xl text-white">COLLECTRO</Link>
             </div>
-            <div className="mr-10">
+            <div className="">
                 <Search setSearchParams={setSearchParams}/>
             </div>
+        </div>
         </div>
         </>
     );
