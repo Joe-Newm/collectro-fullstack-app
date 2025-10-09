@@ -56,18 +56,20 @@ export default function GamePage() {
             </div>
         </div>
         <div className="container mx-auto">
+          <div className="bg-gray-700 p-4 mt-10 rounded-lg">
             <div className="flex gap-6 justify-between">
             <div>
-                <img className="mt-10 max-w-2xl max-h-[600px]" key={selectedScr.id} src={selectedScr.image} alt="game screenshot"/>
+                <img className=" max-w-2xl max-h-[600px]" key={selectedScr.id} src={selectedScr.image} alt="game screenshot"/>
             </div>
-            <div className="grid grid-cols-3 gap-4 h-fit">
+            <div className="grid grid-cols-3 gap-4 h-fit items-start">
                 {screenshots.map((game) => (
                     <a className="cursor-pointer" key={game.id} onClick={(e) => {e.preventDefault(); setSelectedScr(game)}}>
-                        <img className={`mt-10 w-64 h-fit ${selectedScr === game ? "outline outline-blue-400" : null}`} src={game.image} alt="game screenshot"/>
+                        <img className={` w-64 h-fit ${selectedScr === game ? "outline outline-blue-400" : null}`} src={game.image} alt="game screenshot"/>
                     </a>
                 ))}
             </div>
             </div>
+          </div>
         </div>
         </div>
     )
