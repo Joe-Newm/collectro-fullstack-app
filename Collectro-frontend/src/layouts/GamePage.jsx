@@ -63,7 +63,7 @@ export default function GamePage() {
             <div className="grid grid-cols-3 gap-4 h-fit">
                 {screenshots.map((game) => (
                     <a className="cursor-pointer" key={game.id} onClick={(e) => {e.preventDefault(); setSelectedScr(game)}}>
-                        <img className={`mt-10 w-64 h-fit ${selectedScr === game ? "border border-blue-400" : null}`} src={game.image} alt="game screenshot"/>
+                        <img className={`mt-10 w-64 h-fit ${selectedScr === game ? "outline outline-blue-400" : null}`} src={game.image} alt="game screenshot"/>
                     </a>
                 ))}
             </div>
