@@ -37,7 +37,7 @@ export default function Search() {
             <div className="flex justify-center bg-white p-1 pl-4 gap-4 rounded-lg items-center">
                 <form onSubmit={handleSubmit} className="flex">
                 <input onBlur={() => setFocused(false)} onFocus={() => setFocused(true)} className="h-8 bg-white w-lg text-black outline-0" placeholder="Type to search..." value={input} onChange={(e) => handleChange(e.target.value)}/>
-                <button className="w-14 bg-black h-8 rounded-md flex justify-center items-center" type="submit"><FaSearch /></button>
+                <button className="w-14 bg-black h-8 rounded-md flex justify-center items-center cursor-pointer" type="submit"><FaSearch /></button>
                 </form>
             </div>
             {input && focused ? 
