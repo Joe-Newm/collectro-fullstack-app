@@ -27,7 +27,7 @@ export default function HomePage() {
         fetch(featuredGamesUrl).then((res) => res.json()).then((data) => setFeaturedGames(data.results));
     }, [])
    
-    if (!newGames || !featuredGames) return (<h2>Loading...</h2>)
+    if (!newGames || !featuredGames) return (<div className="flex h-screen justify-center items-center"><h2 className="">loading...</h2></div>)
 
     return (
         <div className="container mx-auto mt-10 flex flex-col">

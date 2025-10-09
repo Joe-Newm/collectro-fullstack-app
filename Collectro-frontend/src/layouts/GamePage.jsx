@@ -4,18 +4,21 @@ import Nav from '../components/nav/Nav'
 
 export default function GamePage() {
   const [ game, setGame ] = useState(null);
+  const [ screenshots, setScreenshots ] = useState(null);
     
   const { id } = useParams();
 
   const apiKey = import.meta.env.VITE_RAWG_API_KEY;
   const baseUrl = `https://api.rawg.io/api/games/${id}?key=${apiKey}`
+  const screenshotsUrl = `https://api.rawg.io/api/games/${id}/screenshots?key=${apiKey}`
 
 
   useEffect(() => {
-    fetch(baseUrl).then((res) => res.json()).then((data) => setGame(data))
+    fetch(baseUrl).then((res) => res.json()).then((data) => setGame(data));
+    fetch(screenshotsUrl).then((res) => res.json()).then((data) => setScreenshots(data.results));
   }, [id]);
 
-    if (!game) return (<div className="flex h-screen justify-center items-center"><h2 className="">loading...</h2></div>)
+    if (!game || !screenshots) return (<div className="flex h-screen justify-center items-center"><h2 className="">loading...</h2></div>)
         
     return (
         <div>
@@ -34,6 +37,9 @@ export default function GamePage() {
         </div>
         <div className="container mx-auto">
           <img className="mt-10 w-1/2 max-h-96 object-cover" src={game.background_image_additional} alt="screenshot of game" />
+          {screenshots.map((game) => (
+            <img className="mt-10 w-1/2 max-h-96 object-cover" key={game.id} src={game.image} alt="game screenshot"/>
+          ))}
         </div>
         </div>
     )
