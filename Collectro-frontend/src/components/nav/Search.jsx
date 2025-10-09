@@ -44,8 +44,8 @@ export default function Search() {
             <div className="bg-white flex flex-col text-black z-0 rounded-md text-left p-4">
                 <ul className="flex flex-col gap-4">
                     {searchResults.map((game) => (
-                        <li key={game.id}>
-                            <p>{game.name}</p>
+                        <li className="hover:bg-gray-300" key={game.id}>
+                            <a href={`/games/${game.id}`}>{game.name}</a>
                         </li>
                     ))} 
                 </ul>
