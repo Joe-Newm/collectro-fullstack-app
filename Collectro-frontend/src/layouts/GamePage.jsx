@@ -152,7 +152,7 @@ export default function GamePage() {
                     
                     }
                         {game.tags.length > 0 ? 
-                        <div className="text-left mt-4 h-20 flex flex-wrap gap-4 w-fit">
+                        <div className="text-left mt-4  flex flex-wrap gap-4 w-fit">
                             <h3 className="font-bold">Tags:</h3>
                             {game.tags.map ((tag) => (
                                 <p className="text-sm text-neutral-500" key={tag.id}>{tag.name}</p>
