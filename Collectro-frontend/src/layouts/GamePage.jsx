@@ -1,17 +1,21 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+
+import Card from '../components/Card'
 import Nav from '../components/nav/Nav'
 
 export default function GamePage() {
   const [ game, setGame ] = useState(null);
   const [ screenshots, setScreenshots ] = useState(null);
   const [ selectedScr, setSelectedScr] = useState(null);
+  const [series, setSeries] = useState(null);
     
   const { id } = useParams();
 
   const apiKey = import.meta.env.VITE_RAWG_API_KEY;
   const baseUrl = `https://api.rawg.io/api/games/${id}?key=${apiKey}`
   const screenshotsUrl = `https://api.rawg.io/api/games/${id}/screenshots?key=${apiKey}`
+  const gamesSeries = `https://api.rawg.io/api/games/${id}/game-series?key=${apiKey}`
 
 
   useEffect(() => {
@@ -19,17 +23,24 @@ export default function GamePage() {
         try {
             const gameDataResponse = await fetch(baseUrl);
             const screenshotsResponse = await fetch(screenshotsUrl);
+            const seriesResponse = await fetch(gamesSeries);
             if (!gameDataResponse.ok) {
                 throw new Error(`response error: ${gameDataResponse.status}`)
             } 
             if (!screenshotsResponse.ok) {
                 throw new Error(`response error: ${screenshotsResponse.status}`)
             } 
+            if (!seriesResponse.ok) {
+                throw new Error(`response error: ${seriesResponse.status}`)
+            }
             const gameData = await gameDataResponse.json();
             const screenshotsData = await screenshotsResponse.json();
+            const seriesData = await seriesResponse.json();
+
             setGame(gameData);
             setScreenshots(screenshotsData.results);
             setSelectedScr(screenshotsData.results[0]);
+            setSeries(seriesData.results);
         } catch (error) {
             console.error(`error fetching data`)
         }
@@ -38,7 +49,7 @@ export default function GamePage() {
 
   }, [id]);
 
-    if (!game || !screenshots || !selectedScr ) return (<div className="flex h-screen justify-center items-center"><h2 className="">loading...</h2></div>)
+    if (!game || !screenshots || !selectedScr || !series ) return (<div className="flex h-screen justify-center items-center"><h2 className="">loading...</h2></div>)
         
     return (
         <div>
@@ -56,7 +67,7 @@ export default function GamePage() {
             </div>
         </div>
         <div className="container mx-auto">
-          <div className="bg-gray-700 p-4 mt-10 rounded-lg">
+          <div className="bg-black p-6 mt-10 rounded-lg">
             <div className="flex gap-6 justify-between">
             <div>
                 <img className=" max-w-2xl max-h-[600px]" key={selectedScr.id} src={selectedScr.image} alt="game screenshot"/>
@@ -69,6 +80,18 @@ export default function GamePage() {
                 ))}
             </div>
             </div>
+          </div>
+          <div>
+            <h2 className="font-bold text-left mb-2 mt-10">Games in the Series</h2>
+                    <ul>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 2xl:grid-cols-5 ">
+                    {series.map((game) => (
+                      <li key={game.id} className="bg-black h-96 rounded-lg overflow-hidden max-w-80">
+                        <Card game={game}></Card>
+                      </li>
+                    ))} 
+                  </div>
+                    </ul>
           </div>
         </div>
         </div>
