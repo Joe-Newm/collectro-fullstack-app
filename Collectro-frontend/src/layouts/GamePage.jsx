@@ -60,38 +60,83 @@ export default function GamePage() {
             </div>
             <div className="inset-0 flex flex-col container mx-auto absolute z-20 items-center justify-center text-white">
                 <h1>{game.name}</h1>
-                <p> {game.description_raw} </p>
               <div className="mt-5 justify-center flex gap-x-2 text-xs text-left flex-wrap gap-y-0">{game.parent_platforms ? (game.parent_platforms.map((item) => (<p key={item.platform.id}>{item.platform.name}</p>))) : null}</div>
               <a className="mt-5 underline" href={game.website} target="_blank">{game.website ? game.website : null}</a>
               <p>{game.developer}</p>
             </div>
         </div>
         <div className="container mx-auto">
-          <div className="bg-black p-6 mt-10 rounded-lg">
-            <div className="flex gap-6 justify-between">
-            <div>
-                <img className=" max-w-2xl max-h-[600px]" key={selectedScr.id} src={selectedScr.image} alt="game screenshot"/>
+          <div className="bg-black p-6 mt-10 rounded-lg flex gap-4 flex-col lg:flex-row">
+            <div className="flex flex-col gap-6 w-full lg:w-1/2 ">
+                <div className="w-full">
+                    <img className=" max-w-full max-h-[600px]" key={selectedScr.id} src={selectedScr.image} alt="game screenshot"/>
+                </div>
+                <div className="grid grid-cols-3 gap-4 h-fit items-start">
+                    {screenshots.map((game) => (
+                        <a className="cursor-pointer" key={game.id} onClick={(e) => {e.preventDefault(); setSelectedScr(game)}}>
+                            <img className={` w-64 h-fit ${selectedScr === game ? "outline outline-blue-400" : null}`} src={game.image} alt="game screenshot"/>
+                        </a>
+                    ))}
+                </div>
             </div>
-            <div className="grid grid-cols-3 gap-4 h-fit items-start">
-                {screenshots.map((game) => (
-                    <a className="cursor-pointer" key={game.id} onClick={(e) => {e.preventDefault(); setSelectedScr(game)}}>
-                        <img className={` w-64 h-fit ${selectedScr === game ? "outline outline-blue-400" : null}`} src={game.image} alt="game screenshot"/>
-                    </a>
-                ))}
-            </div>
+            <div className="w-full lg:w-1/2 text-left flex flex-col">
+                <p> {game.description_raw} </p>
+                <div className="mt-4 text-wrap">
+                        <hr className="text-neutral-600"></hr>
+                        <div className="flex gap-10 flex-wrap">
+                        <div className="text-left mt-4">
+                            <h3 className="font-bold">Developers:</h3>
+                            {game.developers.map((dev) => (
+                            <p key={dev.id}>{dev.name}</p>
+                            ))}
+                        </div>
+                        <div className="text-left mt-4">
+                            <h3 className="font-bold">Publishers:</h3>
+                            {game.publishers.map((pub) => (
+                            <div key={pub.id}>
+                                <p>{pub.name}</p>
+                            </div>
+                            ))}
+
+                        </div>
+                        <div className="text-left mt-4">
+                            <h3 className="font-bold">Genres:</h3>
+                            {game.genres.map((genre) => (
+                            <p key={genre.id}>{genre.name}</p>
+                            ))}
+                        </div>
+                        <div className="text-left mt-4">
+                            <h3 className="font-bold">Stores:</h3>
+                            {game.stores.map((store) => (
+                            <p key={store.id}>{store.name}</p>
+                            ))}
+                        </div>
+                        <div className="text-left mt-4">
+                            <h3 className="font-bold">Metacritic:</h3>
+                            <p>{game.metacritic}</p>
+                        </div>
+                        </div>
+                </div>
             </div>
           </div>
           <div>
-            <h2 className="font-bold text-left mb-2 mt-10">Games in the Series</h2>
-                    <ul>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 2xl:grid-cols-5 ">
-                    {series.map((game) => (
-                      <li key={game.id} className="bg-black h-96 rounded-lg overflow-hidden max-w-80">
-                        <Card game={game}></Card>
-                      </li>
-                    ))} 
-                  </div>
-                    </ul>
+            {series.length === 0 ? 
+            null
+            :
+            <div>
+                <h2 className="font-bold text-left mb-2 mt-10">Games in the Series</h2>
+                <ul>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 2xl:grid-cols-5 ">
+                        {series.map((game) => (
+                        <li key={game.id} className="bg-black h-96 rounded-lg overflow-hidden max-w-80">
+                            <Card game={game}></Card>
+                        </li>
+                        ))} 
+                    </div>
+                </ul>
+            </div>
+            }
+
           </div>
         </div>
         </div>
