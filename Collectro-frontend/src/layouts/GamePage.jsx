@@ -116,40 +116,50 @@ export default function GamePage() {
                         <hr className="text-neutral-600"></hr>
                         <div className="flex gap-10 flex-wrap">
                         <div className="text-left mt-4">
-                            <h3 className="font-bold">Developers:</h3>
                             {game.developers.map((dev) => (
-                            <p key={dev.id}>{dev.name}</p>
+                            <div key={dev.id}>
+                                <h3 className="font-bold">Developers:</h3>
+                                <p>{dev.name}</p>
+                            </div>
                             ))}
                         </div>
                         <div className="text-left mt-4">
-                            <h3 className="font-bold">Publishers:</h3>
                             {game.publishers.map((pub) => (
                             <div key={pub.id}>
+                            <h3 className="font-bold">Publishers:</h3>
                                 <p>{pub.name}</p>
                             </div>
                             ))}
 
                         </div>
                         <div className="text-left mt-4">
-                            <h3 className="font-bold">Genres:</h3>
                             {game.genres.map((genre) => (
-                            <p key={genre.id}>{genre.name}</p>
+                            <div key={genre.id}>
+                                <h3 className="font-bold">Genres:</h3>
+                                <p>{genre.name}</p>
+                            </div>
                             ))}
                         </div>
                         {game.stores.length > 0 ?
                         <div className="text-left mt-4">
-                            <h3 className="font-bold">Stores:</h3>
                             {game.stores.map((store) => (
-                            <p key={store.id}>{store.store.name}</p>
+                            <div key={store.id}>
+                            <h3 className="font-bold">Stores:</h3>
+                            <p>{store.store.name}</p>
+                            </div>
                             ))}
                         </div>
                         :
                         null
                     }
+                    {game.metacritic ?
                         <div className="text-left mt-4">
                             <h3 className="font-bold">Metacritic:</h3>
                             <p>{game.metacritic}</p>
                         </div>
+                        :
+                        null
+                }
                         {game.esrb_rating ? 
                         <div className="text-left mt-4">
                             <h3 className="font-bold">ESRB Rating:</h3>
@@ -187,6 +197,9 @@ export default function GamePage() {
                 ))
 
                 }
+                <div className="flex justify-center mt-6">
+                    <a className="h-14 w-40 bg-black text-white flex items-center justify-center" target="_blank" href={game.reddit_url}>View Reddit Page</a>
+                </div>
                 </div>
           </div>
           :
