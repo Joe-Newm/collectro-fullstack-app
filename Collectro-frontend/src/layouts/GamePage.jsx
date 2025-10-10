@@ -11,6 +11,7 @@ export default function GamePage() {
   const [ selectedScr, setSelectedScr] = useState(null);
   const [ series, setSeries ] = useState(null);
   const [ movies, setMovies ] = useState(null);
+  const [redditPosts, setRedditPosts ] = useState(null);
     
   const { id } = useParams();
   const { pathname } = useLocation();
@@ -20,6 +21,7 @@ export default function GamePage() {
   const screenshotsUrl = `https://api.rawg.io/api/games/${id}/screenshots?key=${apiKey}`
   const gamesSeries = `https://api.rawg.io/api/games/${id}/game-series?key=${apiKey}`
   const moviesUrl = `https://api.rawg.io/api/games/${id}/movies?key=${apiKey}`
+  const redditPostsUrl = `https://api.rawg.io/api/games/${id}/reddit?key=${apiKey}`
 
 
 
@@ -30,6 +32,7 @@ export default function GamePage() {
             const screenshotsResponse = await fetch(screenshotsUrl);
             const seriesResponse = await fetch(gamesSeries);
             const moviesResponse = await fetch(moviesUrl);
+            const redditPostsResponse = await fetch(redditPostsUrl);
             if (!gameDataResponse.ok) {
                 throw new Error(`response error: ${gameDataResponse.status}`)
             } 
@@ -42,16 +45,21 @@ export default function GamePage() {
             if (!moviesResponse.ok) {
                 throw new Error(`response error: ${moviesResponse.status}`)
             }
+            if (!redditPostsResponse.ok) {
+                throw new Error(`response error: ${redditPostsResponse.status}`)
+            }
             const gameData = await gameDataResponse.json();
             const screenshotsData = await screenshotsResponse.json();
             const seriesData = await seriesResponse.json();
             const moviesData = await moviesResponse.json();
+            const redditPostsData = await redditPostsResponse.json();
 
             setGame(gameData);
             setScreenshots(screenshotsData.results);
             setSelectedScr(screenshotsData.results[0]);
             setSeries(seriesData.results);
             setMovies(moviesData.results);
+            setRedditPosts(redditPostsData.results);
         } catch (error) {
             console.error(`error fetching data`)
         }
@@ -152,7 +160,7 @@ export default function GamePage() {
                     
                     }
                         {game.tags.length > 0 ? 
-                        <div className="text-left mt-4 h-20 flex flex-wrap gap-4 w-fit">
+                        <div className="text-left mt-4 flex flex-wrap gap-4 w-fit">
                             <h3 className="font-bold">Tags:</h3>
                             {game.tags.map ((tag) => (
                                 <p className="text-sm text-neutral-500" key={tag.id}>{tag.name}</p>
@@ -166,6 +174,25 @@ export default function GamePage() {
                 </div>
             </div>
           </div>
+
+            {redditPosts.length > 0 ? 
+          <div>
+                <h2 className="font-bold text-left mb-2 mt-10">Recent Posts on Reddit</h2>
+                <hr className="text-neutral-500"></hr>
+                <div className="flex flex-col gap-1 justify-center w-full">
+                {redditPosts.map((post) => (
+                    <a target="_blank" key={post.id} className="h-[55px] text-left bg-neutral-700 flex items-center pl-6" href={post.url}>
+                        <h3 className="text-lg">{post.name}</h3>
+                    </a>
+                ))
+
+                }
+                </div>
+          </div>
+          :
+          null
+        }
+
           <div>
             {series.length === 0 ? 
             null

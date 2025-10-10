@@ -45,26 +45,26 @@ export default function MainGrid() {
     <> 
       <div className="flex justify-center pt-8">  
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 2xl:grid-cols-5 container mx-auto">
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
       </ul>
       </div>
   </>
