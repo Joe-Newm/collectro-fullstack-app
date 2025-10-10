@@ -6,7 +6,7 @@ import Card from "./Card.jsx";
 
 export default function MainGrid() {
 
-    const [games, setGames] = useState([]);
+    const [games, setGames] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [pageCount, setPageCount ] = useState(0);
 
@@ -42,13 +42,41 @@ export default function MainGrid() {
     console.log(pageCount)
   }, [query, page]);
 
-
+  if (!games) return (
+    <> 
+      <div className="flex justify-center pt-8">  
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 2xl:grid-cols-5 container mx-auto">
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+          <li className="bg-black h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+      </ul>
+      </div>
+  </>
+  
+        )
 
   return (
     <>
         <ul>
       <div className="flex justify-center pt-8">  
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 2xl:grid-cols-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 2xl:grid-cols-5 container mx-auto">
         {games.map((game) => (
           <li key={game.id} className="bg-black h-96 rounded-lg overflow-hidden max-w-80">
             <Card game={game}></Card>
