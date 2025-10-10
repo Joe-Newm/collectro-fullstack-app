@@ -41,30 +41,22 @@ export default function MainGrid() {
     getData();
   }, [query, page]);
 
+
+  // grid for skeleton games when loading
+    let items = [];
+    for (let i = 0; i < 20; i++) {
+      items.push(
+          <li className="bg-neutral-700 h-70 rounded-lg max-w-80 min-w-60 overflow-hidden relative">
+            <div className="absolute bottom-0 w-full h-20 bg-neutral-900/50"></div>
+          </li>
+      )
+    }
+
   if (!games) return (
     <> 
       <div className="flex justify-center pt-8">  
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 2xl:grid-cols-5 container mx-auto">
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
-          <li className="bg-neutral-700 h-96 rounded-lg max-w-80 min-w-60 overflow-hidden"></li>
+        {items}
       </ul>
       </div>
   </>
@@ -77,7 +69,7 @@ export default function MainGrid() {
       <div className="flex justify-center pt-8">  
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 2xl:grid-cols-5 container mx-auto">
         {games.map((game) => (
-          <li key={game.id} className="bg-black h-96 rounded-lg overflow-hidden max-w-80">
+          <li key={game.id} className=" rounded-lg overflow-hidden max-w-80">
             <Card game={game}></Card>
           </li>
         ))} 

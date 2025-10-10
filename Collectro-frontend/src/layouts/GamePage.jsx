@@ -116,35 +116,35 @@ export default function GamePage() {
                         <hr className="text-neutral-600"></hr>
                         <div className="flex gap-10 flex-wrap">
                         <div className="text-left mt-4">
+                            {game.developers.length > 0 ? <h3 className="font-bold">Developers:</h3> : null }
                             {game.developers.map((dev) => (
                             <div key={dev.id}>
-                                <h3 className="font-bold">Developers:</h3>
                                 <p>{dev.name}</p>
                             </div>
                             ))}
                         </div>
                         <div className="text-left mt-4">
+                            {game.publishers.length > 0 ? <h3 className="font-bold">Publishers:</h3> : null }
                             {game.publishers.map((pub) => (
                             <div key={pub.id}>
-                            <h3 className="font-bold">Publishers:</h3>
                                 <p>{pub.name}</p>
                             </div>
                             ))}
 
                         </div>
                         <div className="text-left mt-4">
+                            {game.genres.length ? <h3 className="font-bold">Genres:</h3> : null }
                             {game.genres.map((genre) => (
                             <div key={genre.id}>
-                                <h3 className="font-bold">Genres:</h3>
                                 <p>{genre.name}</p>
                             </div>
                             ))}
                         </div>
                         {game.stores.length > 0 ?
                         <div className="text-left mt-4">
+                            {game.stores.length > 0 ? <h3 className="font-bold">Stores:</h3> : null}
                             {game.stores.map((store) => (
                             <div key={store.id}>
-                            <h3 className="font-bold">Stores:</h3>
                             <p>{store.store.name}</p>
                             </div>
                             ))}
@@ -215,7 +215,7 @@ export default function GamePage() {
                 <ul>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 2xl:grid-cols-5 ">
                         {series.map((game) => (
-                        <li key={game.id} className="bg-black h-96 rounded-lg overflow-hidden max-w-80">
+                        <li key={game.id} className=" rounded-lg overflow-hidden max-w-80">
                             <Card game={game}></Card>
                         </li>
                         ))} 
