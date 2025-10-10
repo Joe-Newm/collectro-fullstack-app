@@ -15,6 +15,7 @@ This app is a collection of video games using the Rawg.io API. I'm currently tes
 [X] Add popup search modal  
 [X] Add page for selecting a game. Displays more info about game along with trailers etc.  
 [] Add videos on hover over cards  
+[X] Add trailers
 [X] Add sections to homepage like "New Games" "Top Rated"  
 [] Add filtering  
 [] Add authentication  

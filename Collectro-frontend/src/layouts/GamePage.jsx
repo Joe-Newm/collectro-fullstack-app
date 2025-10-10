@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 import Card from '../components/Card'
 import Nav from '../components/nav/Nav'
@@ -9,13 +10,17 @@ export default function GamePage() {
   const [ screenshots, setScreenshots ] = useState(null);
   const [ selectedScr, setSelectedScr] = useState(null);
   const [ series, setSeries ] = useState(null);
+  const [ movies, setMovies ] = useState(null);
     
   const { id } = useParams();
+  const { pathname } = useLocation();
 
   const apiKey = import.meta.env.VITE_RAWG_API_KEY;
   const baseUrl = `https://api.rawg.io/api/games/${id}?key=${apiKey}`
   const screenshotsUrl = `https://api.rawg.io/api/games/${id}/screenshots?key=${apiKey}`
   const gamesSeries = `https://api.rawg.io/api/games/${id}/game-series?key=${apiKey}`
+  const moviesUrl = `https://api.rawg.io/api/games/${id}/movies?key=${apiKey}`
+
 
 
   useEffect(() => {
@@ -24,6 +29,7 @@ export default function GamePage() {
             const gameDataResponse = await fetch(baseUrl);
             const screenshotsResponse = await fetch(screenshotsUrl);
             const seriesResponse = await fetch(gamesSeries);
+            const moviesResponse = await fetch(moviesUrl);
             if (!gameDataResponse.ok) {
                 throw new Error(`response error: ${gameDataResponse.status}`)
             } 
@@ -33,22 +39,28 @@ export default function GamePage() {
             if (!seriesResponse.ok) {
                 throw new Error(`response error: ${seriesResponse.status}`)
             }
+            if (!moviesResponse.ok) {
+                throw new Error(`response error: ${moviesResponse.status}`)
+            }
             const gameData = await gameDataResponse.json();
             const screenshotsData = await screenshotsResponse.json();
             const seriesData = await seriesResponse.json();
+            const moviesData = await moviesResponse.json();
 
             setGame(gameData);
             setScreenshots(screenshotsData.results);
             setSelectedScr(screenshotsData.results[0]);
             setSeries(seriesData.results);
+            setMovies(moviesData.results);
         } catch (error) {
             console.error(`error fetching data`)
         }
     }
     fetchData();
-  }, [id]);
+    window.scrollTo(0, 0);
+  }, [id, pathname]);
 
-    if (!game || !screenshots || !selectedScr || !series ) return (<div className="flex h-screen justify-center items-center"><h2 className="">loading...</h2></div>)
+    if (!game || !screenshots || !selectedScr || !series ) return (<div className="flex h-screen justify-center items-center"><h2 className="">loading...</h2>{console.log(game, screenshots, selectedScr, series)}</div>)
         
     return (
         <div>
@@ -65,6 +77,18 @@ export default function GamePage() {
             </div>
         </div>
         <div className="container mx-auto">
+
+          {movies.length > 0 ?
+          <div className="bg-black mt-10">
+            <video controls width="1920">
+                <source src={movies[0].data.max} />
+            </video>
+            
+          </div>
+          :
+          null
+        }
+
           <div className="bg-black p-6 mt-10 rounded-lg flex gap-6 flex-col lg:flex-row">
             <div className="flex flex-col gap-6 w-full lg:w-1/2 ">
                 <div className="w-full">
@@ -104,12 +128,16 @@ export default function GamePage() {
                             <p key={genre.id}>{genre.name}</p>
                             ))}
                         </div>
+                        {game.stores.length > 0 ?
                         <div className="text-left mt-4">
                             <h3 className="font-bold">Stores:</h3>
                             {game.stores.map((store) => (
-                            <p key={store.id}>{store.name}</p>
+                            <p key={store.id}>{store.store.name}</p>
                             ))}
                         </div>
+                        :
+                        null
+                    }
                         <div className="text-left mt-4">
                             <h3 className="font-bold">Metacritic:</h3>
                             <p>{game.metacritic}</p>
@@ -118,6 +146,17 @@ export default function GamePage() {
                         <div className="text-left mt-4">
                             <h3 className="font-bold">ESRB Rating:</h3>
                             <p>{game.esrb_rating.name}</p>
+                        </div>
+                        :
+                        null
+                    
+                    }
+                        {game.tags.length > 0 ? 
+                        <div className="text-left mt-4 h-20 flex flex-wrap gap-4 w-fit">
+                            <h3 className="font-bold">Tags:</h3>
+                            {game.tags.map ((tag) => (
+                                <p className="text-sm text-neutral-500" key={tag.id}>{tag.name}</p>
+                            ))}
                         </div>
                         :
                         null
