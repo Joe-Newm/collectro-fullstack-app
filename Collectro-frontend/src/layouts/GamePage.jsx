@@ -65,7 +65,7 @@ export default function GamePage() {
             </div>
         </div>
         <div className="container mx-auto">
-          <div className="bg-black p-6 mt-10 rounded-lg flex gap-4 flex-col lg:flex-row">
+          <div className="bg-black p-6 mt-10 rounded-lg flex gap-6 flex-col lg:flex-row">
             <div className="flex flex-col gap-6 w-full lg:w-1/2 ">
                 <div className="w-full">
                     <img className=" max-w-full max-h-[600px]" key={selectedScr.id} src={selectedScr.image} alt="game screenshot"/>
@@ -114,6 +114,15 @@ export default function GamePage() {
                             <h3 className="font-bold">Metacritic:</h3>
                             <p>{game.metacritic}</p>
                         </div>
+                        {game.esrb_rating ? 
+                        <div className="text-left mt-4">
+                            <h3 className="font-bold">ESRB Rating:</h3>
+                            <p>{game.esrb_rating.name}</p>
+                        </div>
+                        :
+                        null
+                    
+                    }
                         </div>
                 </div>
             </div>

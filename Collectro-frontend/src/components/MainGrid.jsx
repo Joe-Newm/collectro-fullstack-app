@@ -39,7 +39,6 @@ export default function MainGrid() {
 
   useEffect(() => {
     getData();
-    console.log(pageCount)
   }, [query, page]);
 
   if (!games) return (
