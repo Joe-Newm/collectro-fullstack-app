@@ -46,6 +46,7 @@ export default function MainGrid() {
 
   useEffect(() => {
     getData();
+    window.scrollTo(0, 0);
   }, [query, page]);
 
 

@@ -47,7 +47,7 @@ export default function HomePage() {
             </div>
             <div>
             <h2 className="font-bold text-left mb-2 mt-20">Genres</h2>
-            <ul className="grid grid-rows grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 2xl:grid-cols-6 gap-4 container mx-auto">
+            <ul className="grid grid-rows grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 container mx-auto">
                 {genres.filter((genre) => genre.name !== "Educational").map((genre) => (
                     <Link key={genre.id} to={`/results?genre=${genre.id}&page=1`}>
                         <li className="relative h-60 w-60">
