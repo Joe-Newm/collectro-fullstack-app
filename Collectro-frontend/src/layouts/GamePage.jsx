@@ -68,7 +68,7 @@ export default function GamePage() {
     window.scrollTo(0, 0);
   }, [id, pathname]);
 
-    if (!game || !screenshots || !selectedScr || !series ) return (<div className="flex h-screen justify-center items-center"><h2 className="">loading...</h2>{console.log(game, screenshots, selectedScr, series)}</div>)
+    if (!game || !screenshots || !selectedScr || !series ) return (<div className="flex h-screen justify-center items-center"><h2 className="">loading...</h2></div>)
         
     return (
         <div>

@@ -13,13 +13,20 @@ export default function MainGrid() {
 
   const query = searchParams.get("search") || "";
   const page = searchParams.get("page") || 1;
+  const genre = searchParams.get("genre") || "";
 
   const apiKey = import.meta.env.VITE_RAWG_API_KEY;
   const baseUrl = `https://api.rawg.io/api/games?key=${apiKey}`
 
-
+    let url = "";
     async function getData() {
-      const url = query ? `https://api.rawg.io/api/games?key=${apiKey}&search=${query}&page=${page}` : `https://api.rawg.io/api/games?key=${apiKey}&page=${page}`;
+      if (query) {
+        url = `https://api.rawg.io/api/games?key=${apiKey}&search=${query}&page=${page}`
+      } else if (genre) {
+        url = `https://api.rawg.io/api/games?key=${apiKey}&genres=${genre}&page=${page}`
+      } else {
+        url = `https://api.rawg.io/api/games?key=${apiKey}&page=${page}`;
+      }
 
       try {
         const response = await fetch(url)
@@ -80,9 +87,9 @@ export default function MainGrid() {
           <button 
           onClick={() => {
             if (Number(page) === 1) {
-            setSearchParams({search: query, page: Number(page)})
+              query ? setSearchParams({search: query, page: Number(page)}) : setSearchParams({genre: genre, page: Number(page)})
             } else {
-            setSearchParams({search: query, page: Number(page) - 1})
+              query ? setSearchParams({search: query, page: Number(page) - 1}) : setSearchParams({genre: genre, page: Number(page) - 1})
             }
             window.scrollTo({top: 0, behavior: "smooth"});
           
@@ -94,9 +101,9 @@ export default function MainGrid() {
           <button
           onClick={() => {
             if (!pageCount || Number(page) >= pageCount) {
-              setSearchParams({search: query, page: Number(page)})
+              query ? setSearchParams({search: query, page: Number(page)}) : setSearchParams({genre: genre, page: Number(page)})
             } else {
-              setSearchParams({search: query, page: Number(page) + 1})
+              query ? setSearchParams({search: query, page: Number(page) + 1}) : setSearchParams({genre: genre, page: Number(page) + 1})
             }
             window.scrollTo({top: 0, behavior: "smooth"})
             }
