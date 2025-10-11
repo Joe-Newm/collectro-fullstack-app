@@ -21,11 +21,11 @@ export default function MainGrid() {
     let url = "";
     async function getData() {
       if (query) {
-        url = `https://api.rawg.io/api/games?key=${apiKey}&search=${query}&page=${page}`
+        url = `https://api.rawg.io/api/games?key=${apiKey}&search=${query}&page=${page}&page_size=40`
       } else if (genre) {
-        url = `https://api.rawg.io/api/games?key=${apiKey}&genres=${genre}&page=${page}`
+        url = `https://api.rawg.io/api/games?key=${apiKey}&genres=${genre}&page=${page}&page_size=40`
       } else {
-        url = `https://api.rawg.io/api/games?key=${apiKey}&page=${page}`;
+        url = `https://api.rawg.io/api/games?key=${apiKey}&page=${page}&page_size=40`;
       }
 
       try {
