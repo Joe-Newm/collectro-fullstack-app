@@ -97,7 +97,7 @@ export default function GamePage() {
           null
         }
 
-          <div className="bg-black p-6 mt-10 rounded-lg flex gap-6 flex-col lg:flex-row">
+          <div className="bg-black p-6 mt-20 rounded-lg flex gap-6 flex-col lg:flex-row">
             <div className="flex flex-col gap-6 w-full lg:w-1/2 ">
                 <div className="w-full">
                     <img className=" max-w-full max-h-[600px]" key={selectedScr.id} src={selectedScr.image} alt="game screenshot"/>
@@ -187,7 +187,7 @@ export default function GamePage() {
 
             {redditPosts.length > 0 ? 
           <div>
-                <h2 className="font-bold text-left mb-2 mt-10">Recent Posts on Reddit</h2>
+                <h2 className="font-bold text-left mb-2 mt-20">Recent Posts on Reddit</h2>
                 <hr className="text-neutral-500"></hr>
                 <div className="flex flex-col gap-1 justify-center w-full">
                 {redditPosts.map((post) => (
@@ -211,7 +211,7 @@ export default function GamePage() {
             null
             :
             <div>
-                <h2 className="font-bold text-left mb-2 mt-10">Games in the Series</h2>
+                <h2 className="font-bold text-left mb-2 mt-20">Games in the Series</h2>
                 <ul>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 2xl:grid-cols-5 ">
                         {series.map((game) => (

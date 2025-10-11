@@ -34,7 +34,7 @@ export default function HomePage() {
     if (!newGames || !featuredGames || !genres) return (<div className="flex h-screen justify-center items-center"><h2 className="">loading...</h2></div>)
 
     return (
-        <div className="container mx-auto mt-10 flex flex-col">
+        <div className="container mx-auto mt-20 flex flex-col">
             <div>
             <h2 className="font-bold text-left mb-2">Featured Games</h2>
             <ul className="grid grid-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -46,7 +46,7 @@ export default function HomePage() {
             </ul> 
             </div>
             <div>
-            <h2 className="font-bold text-left mb-2 mt-10">New Releases</h2>
+            <h2 className="font-bold text-left mb-2 mt-20">Genres</h2>
             <ul className="grid grid-rows grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4 container mx-auto">
                 {genres.filter((genre) => genre.name !== "Educational").map((genre) => (
                     <Link key={genre.id} to={`/results?genre=${genre.id}&page=1`}>
@@ -62,7 +62,7 @@ export default function HomePage() {
             </ul>
             </div>
             <div>           
-            <h2 className="font-bold text-left mb-2 mt-10">New Releases</h2>
+            <h2 className="font-bold text-left mb-2 mt-20">New Releases</h2>
             <ul className="grid grid-rows grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 container mx-auto">
                 {newGames.map((game) => (
                     <li key={game.id} className=" rounded-lg overflow-hidden max-w-90">
