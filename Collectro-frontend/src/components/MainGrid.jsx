@@ -6,7 +6,7 @@ import Card from "./Card.jsx";
 
 export default function MainGrid() {
 
-    const [games, setGames] = useState(null);
+  const [games, setGames] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [pageCount, setPageCount ] = useState(0);
 

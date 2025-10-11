@@ -48,13 +48,13 @@ export default function HomePage() {
             <div>
             <h2 className="font-bold text-left mb-2 mt-20">Genres</h2>
             <ul className="grid grid-rows grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 container mx-auto">
-                {genres.filter((genre) => genre.name !== "Educational").map((genre) => (
+                {genres.filter((genre) => !["Educational", "Board Games", "Card", "Casual","Simulation"].includes(genre.name)).map((genre) => (
                     <Link key={genre.id} to={`/results?genre=${genre.id}&page=1`}>
                         <li className="relative h-60 w-60">
                             
                             <img src={genre.image_background} alt={genre.name} className="h-full rounded-lg object-cover w-full"/>
                             <div className="bg-blue-500/50 rounded-lg absolute bottom-0 w-full h-full flex items-center justify-center">
-                                <h3 className="font-bold text-2xl">{genre.name}</h3>
+                                <h3 className="font-bold text-2xl ">{genre.name}</h3>
                             </div>
                         </li>
                     </Link>
