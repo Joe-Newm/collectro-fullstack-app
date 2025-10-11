@@ -95,7 +95,7 @@ export default function MainGrid() {
           
           }
         }
-          className="h-20 w-20 !bg-gray-600"
+          className="h-20 w-20 !bg-gray-600 cursor-pointer"
 
           >prev</button>
           <button
@@ -108,7 +108,7 @@ export default function MainGrid() {
             window.scrollTo({top: 0, behavior: "smooth"})
             }
           } 
-          className="h-20 w-20 !bg-gray-600"
+          className="h-20 w-20 !bg-gray-600 cursor-pointer"
           href="#top"
 
           >next</button>
